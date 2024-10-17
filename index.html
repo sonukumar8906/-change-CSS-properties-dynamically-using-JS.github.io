@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> How to change CSS properties dynamically using JS</title>
+</head>
+<style>
+   *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+
+   .main_container{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 38rem;
+   }
+   .child_container{
+    height: 24rem;
+  width: 26rem;
+  background: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 1s ease-in-out;
+   }
+
+   .child_container:hover{
+    background : rgb(192, 162, 220);
+   }
+
+   .child_container p{
+    text-align: center;
+    font-size: 21px;
+  padding: 22px;
+  color: black;
+   }
+#btn{
+    margin-top: 66px;
+  padding: 6px 15px;
+  font-size: 21px;
+  border-radius: 12px;
+  border: none;
+  background: #6060db;
+  color: white;
+  font-weight: 600;
+  transition: background-color 0.5s ease-in-out;
+}
+
+#btn:hover{
+    background: rgb(61, 76, 94);
+}
+</style>
+<body>
+    <div class="main_container">
+        <div class="child_container">
+            <p>Hello, I'm a div!</p>
+        </div>
+      <div class="buttons">
+        <button id="btn"> toggle button</button>
+      </div>
+    </div>
+
+    <script>
+        const buttons = document.querySelector('#btn');
+        let child_div = document.querySelector('.child_container');
+        const font_size = document.querySelector('.child_container p')
+        let isOriginal = true;
+        const changeColor = () =>{
+            if(isOriginal){
+            child_div.style.backgroundColor="green";
+            child_div.style.height="30rem";
+            child_div.style.width="30rem";
+            font_size.style.fontSize="30px";
+            font_size.style.color="blue";
+        }else{
+            child_div.style.backgroundColor="yellow";
+            child_div.style.height="24rem";
+            child_div.style.width="26rem";
+            font_size.style.fontSize="21px";
+            font_size.style.color="black";   
+        }
+        isOriginal = !isOriginal;
+        }
+        buttons.addEventListener('click', changeColor);
+    </script>
+</body>
+</html>
